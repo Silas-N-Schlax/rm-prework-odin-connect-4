@@ -1,7 +1,7 @@
 require "colorize"
 # Player class for game
 class Player
-  def initalize(color, name = username)
+  def initialize(color, name = username)
     @name = name
     @color = color
   end
