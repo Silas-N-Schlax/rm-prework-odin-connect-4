@@ -58,6 +58,7 @@ describe Board do
       end
     end
   end
+
   describe "#game_over?" do
     context "when player places winning peice and fills board" do
       subject(:winning_game) { described_class.new(Array.new(7) { Array.new(6, "x") }) }
@@ -67,17 +68,17 @@ describe Board do
     end
     context "when player does not place a winning peice and fills the board" do
       array = [
-        ["x", nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil],
-        [nil, nil, nil, nil, nil, nil]
+        %w[x x x o o o],
+        %w[o o o x x x],
+        %w[x x x o o o],
+        %w[o o o x x x],
+        %w[x x x o o o],
+        %w[o o o x x x],
+        %w[x x x o o o]
       ]
       subject(:winning_game) { described_class.new(array) }
       it "returns nil" do
-        expect(winning_game.game_over?(0)).to be(nil)
+        expect(winning_game.game_over?(0)).to be(true)
       end
     end
   end
