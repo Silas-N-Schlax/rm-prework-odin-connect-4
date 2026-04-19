@@ -82,4 +82,19 @@ describe Board do
       end
     end
   end
+
+  describe "#full_board?" do
+    context "when board is full" do
+      subject(:full_board) { described_class.new(Array.new(7) { Array.new(6, true) }) }
+      it "returns true" do
+        expect(full_board.full_board?).to be(true)
+      end
+    end
+    context "when board is not full" do
+      subject(:full_board) { described_class.new(Array.new(7) { Array.new(5, true) }) }
+      it "returns false" do
+        expect(full_board.full_board?).to be(false)
+      end
+    end
+  end
 end
