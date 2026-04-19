@@ -1,13 +1,15 @@
 require "colorize"
 # Player class for game
 class Player
+  attr_reader :name, :color
+
   def initialize(color, name = username)
     @name = name
     @color = color
   end
 
   def username
-    print "Please enter your name! ->".yellow
+    print "Please enter your name! -> ".yellow
     gets.chomp.chars.slice(0..12).join
   end
 end
