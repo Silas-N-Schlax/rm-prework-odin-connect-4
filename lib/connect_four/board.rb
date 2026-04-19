@@ -8,6 +8,7 @@ class Board
     return false if full?(column)
 
     @board[column].push(peice)
+    send_board
     true
   end
 
@@ -26,7 +27,7 @@ class Board
   end
 
   def game_over?(column)
-    true if winner?(column) && full_board?
+    true if winner?(column) || full_board?
   end
 
   def winner?(column)
@@ -73,7 +74,6 @@ class Board
   def generate_middle_board
     board = Array.new(6) { [] }
     @board.each_with_index do |column, i|
-      column = column.reverse
       6.times do |j|
         board[j].push(i.zero? ? "\e[36m║ #{column[j] || ' '} \e[36m║" : " #{column[j] || ' '} \e[36m║")
       end
